@@ -1,0 +1,12 @@
+[
+  {
+  "year": 2012,
+  "data": {
+    "Manual Analysis": 95,
+    "Vulnerabilities": 35,
+    "Contract Readability": 99,
+    "Owner Privileges": 78,
+    "Compiler Check": 90
+    }
+  }  
+]
