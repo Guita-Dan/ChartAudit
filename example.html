@@ -73,8 +73,8 @@ d3.json('data/data.json', function(err, data) {
     .reverseLayerOrder(true)
     .capitalizeLabels(true)
     .barColors(['#ffa600','#003f5c', '#58508d', '#bc5090', '#ff6361'])
-    .domain([0,100])
-    .tickValues([20,40,60,80,100])
+    .domain([50,100])
+    .tickValues([50,60,70,80,90,100])
     .tickCircleValues([10,20,30,40,50,60,70,80,90]);
 
   d3.select('#chart')
