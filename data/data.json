@@ -3,10 +3,10 @@
   "year": 2012,
   "data": {
     "Manual Analysis": 95,
-    "Vulnerabilities": 35,
-    "Contract Readability": 99,
-    "Owner Privileges": 78,
-    "Compiler Check": 90
+    "Vulnerabilities": 96,
+    "Contract Readability": 95,
+    "Owner Privileges":65,
+    "Compiler Check": 100
     }
   }  
 ]

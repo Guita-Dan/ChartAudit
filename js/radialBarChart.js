@@ -83,6 +83,7 @@ function radialBarChart() {
       .enter()
       .append('text')
       .style('text-anchor', 'middle')
+      .style('color', 'white')
       .style('fill', function(d, i) {return colorLabels ? barColors[i % barColors.length] : null;})
       .append('textPath')
       .attr('xlink:href', '#label-path')
