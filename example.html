@@ -1,96 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Radial Bar Chart example</title>
-    <style>
 
-#chart {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 16px;
-  background-color: #062a6b;
-}
-#chart path {
-  fill: none;
-}
+<head>
+  <meta charset="utf-8">
+  <title>Radial Bar Chart example</title>
+  <style>
+    body{background-color: #062a6b;}
+    #chart {
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 16px;
+    }
 
-/* layers */
-#chart .layer-0 path {
-  fill: steelblue;
-}
-#chart .layer-1 path {
-  fill: white !important;
-  opacity: 0.3;
-  stroke-width: 2px;
-  stroke: #999;
-}
+    #chart path {
+      fill: none;
+    }
 
-/* Outer circle, tick-circles and spokes */
-#chart circle.outer {
-  stroke: #fff;
-  stroke-dasharray: 1, 0;  
-}
-#chart .tick-circles circle {
-  stroke: #ddd;
+    /* layers */
+    #chart .layer-0 path {
+      fill: steelblue;
+    }
 
-  stroke-dasharray: 2, 2;  
-}
-#chart .spokes line {
-  stroke: #666;
-  stroke-width: 0.2;
-}
+    #chart .layer-1 path {
+      fill: white !important;
+      opacity: 0.3;
+      stroke-width: 2px;
+      stroke: #999;
+    }
 
-/* Axis */
-#chart .axis text {
-  fill:#fff;
-  font-size: 24px;
-  stroke:black; stroke-width:0.2;
+    /* Outer circle, tick-circles and spokes */
+    #chart circle.outer {
+      stroke: #fff;
+      stroke-dasharray: 1, 0;
+    }
 
-}
-#chart .axis path {
-  stroke: #999;
-  shape-rendering: crispEdges;
-}
-#chart .axis line {
-  stroke: #123;
-  shape-rendering: crispEdges;
-}
+    #chart .tick-circles circle {
+      stroke: #ddd;
 
-/* Labels */
-#chart .labels text {
-  fill: #fff;
-  font-size: 26px;
-  font-weight: 600;
-}
-g.axis g:nth-child(6)[style]{
-  transform:translate(0,-310px)!important;
-}
-    </style>
-  </head>
+      stroke-dasharray: 2, 2;
+    }
 
-  <body>
-    <div id="chart"></div>
+    #chart .spokes line {
+      stroke: #666;
+      stroke-width: 0.2;
+    }
 
-    <script src="js/d3.v3.min.js"></script>
-    <script src="js/radialBarChart.js"></script>
-    <script>
-d3.json('data/data.json', function(err, data) {
-  var chart = radialBarChart()
-    .barHeight(300)
-    .reverseLayerOrder(true)
-    .capitalizeLabels(true)
-    .barColors(['#ffa600','#a43f5c', '#58508d', '#bc5090', '#ff6361'])
-    .domain([50,100])
-    .tickValues([50,60,70,80,90,100])
-    .tickCircleValues([10,20,30,40,50,60,70,80,90]);
+    /* Axis */
+    #chart .axis text {
+      fill: #fff;
+      font-size: 24px;
+      stroke: black;
+      stroke-width: 0.2;
 
-  d3.select('#chart')
-    .datum(data)
-    .call(chart);
-});
+    }
+
+    #chart .axis path {
+      stroke: #999;
+      shape-rendering: crispEdges;
+    }
+
+    #chart .axis line {
+      stroke: #123;
+      shape-rendering: crispEdges;
+    }
+
+    /* Labels */
+    #chart .labels text {
+      fill: #fff;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    g.axis g:nth-child(6)[style] {
+      transform: translate(0, -310px) !important;
+     
+    }
+    .scoru{
+      font-size:26px;
+      margin-top:50px;
+      color:white;
+    }
+    #promo{
+      margin-top:0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="chart"></div>
+
+  <script src="js/d3.v3.min.js"></script>
+  <script src="js/radialBarChart.js"></script>
+  <script>
+    d3.json('data.json', function (err, data) {
+      var chart = radialBarChart()
+        .barHeight(300)
+        .reverseLayerOrder(true)
+        .capitalizeLabels(true)
+        .barColors(['#ffa600', '#a43f5c', '#58508d', '#bc5090', '#ff6361'])
+        .domain([50, 100])
+        .tickValues([50, 60, 70, 80, 90, 100])
+        .tickCircleValues([10, 20, 30, 40, 50, 60, 70, 80, 90]);
+
+      d3.select('#chart')
+        .datum(data)
+        .call(chart);
+    });
+  </script> 
+  <div class="scoru"> SCORE: </div>
+  <div class="scoru" id="promo"></div>
+  <script>
+   let http = new XMLHttpRequest();
+
+http.open('get', 'data.json', true);
+
+http.send();
+
+http.onload = function(){
+  if(this.readyState == 4 && this.status == 200){
+
+   let data = JSON.parse(this.responseText);
+    
+   let output = "";
+
+   for(let item of data){
+    var man = Number(`${item.data["Manual Analysis"]}`);
+    let vulnerabilities = Number(`${item.data.Vulnerabilities}`);
+    let contractRead = Number(`${item.data["Contract Readability"]}`);
+    let ownerPrivileges = Number(`${item.data["Owner Privileges"]}`);
+    let compiler = Number(`${item.data["Compiler Check"]}`);
+     output = (man + vulnerabilities + contractRead + ownerPrivileges + compiler)/5;
+
+            }
+          
+        
+   document.querySelector("#promo").innerHTML = output;                 
+        }
+      }
+  </script>
 
 
-    </script>
-  
-  </body>
+ 
+</body>
+
 </html>
