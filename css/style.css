@@ -4,7 +4,7 @@ body {
 	margin: 0 auto;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
-	line-height: 20px;color: white;
+	line-height: 20px;color: #000;
 }
 section {
 	margin-bottom: 40px;
@@ -17,14 +17,6 @@ h1 {
 }
 h2 {
 	font-weight: 300;
-}
-a {
-	color: #0088cc;
-	text-decoration: none;
-}
-a:hover {
-	color: #005580;
-	text-decoration: underline;
 }
 #info {
 	height: 20px;

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>Radial Bar Chart example</title>
   <style>
-    body{background-color: #062a6b;}
+    body{background-color: #fff;}
     #chart {
       font-family: "Helvetica Neue", Helvetica, sans-serif;
       font-size: 16px;
@@ -17,11 +17,11 @@
 
     /* layers */
     #chart .layer-0 path {
-      fill: steelblue;
+      fill: #fff;
     }
 
     #chart .layer-1 path {
-      fill: white !important;
+      fill: #000 !important;
       opacity: 0.3;
       stroke-width: 2px;
       stroke: #999;
@@ -29,12 +29,12 @@
 
     /* Outer circle, tick-circles and spokes */
     #chart circle.outer {
-      stroke: #fff;
+      stroke: #000;
       stroke-dasharray: 1, 0;
     }
 
     #chart .tick-circles circle {
-      stroke: #ddd;
+      stroke: #000;
 
       stroke-dasharray: 2, 2;
     }
@@ -46,7 +46,7 @@
 
     /* Axis */
     #chart .axis text {
-      fill: #fff;
+      fill: #000;
       font-size: 24px;
       stroke: black;
       stroke-width: 0.2;
@@ -59,13 +59,12 @@
     }
 
     #chart .axis line {
-      stroke: #123;
-      shape-rendering: crispEdges;
+      display: none;
     }
 
     /* Labels */
     #chart .labels text {
-      fill: #fff;
+      fill: #000;
       font-size: 26px;
       font-weight: 600;
     }
@@ -77,7 +76,7 @@
     .scoru{
       font-size:26px;
       margin-top:50px;
-      color:white;
+      color:#000;
     }
     #promo{
       margin-top:0;
